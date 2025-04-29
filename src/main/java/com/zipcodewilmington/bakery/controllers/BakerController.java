@@ -5,11 +5,10 @@ import com.zipcodewilmington.bakery.services.BakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/{baker}")
+@RestController
+@RequestMapping("/baker")
 public class BakerController {
 
     @Autowired
@@ -36,13 +35,13 @@ public class BakerController {
     @PostMapping
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Baker> create(Baker baker) {
+    public ResponseEntity<Baker> create(@RequestBody Baker baker) {
         return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Baker> update(@PathVariable("id") Long id, Baker baker) {
+    public ResponseEntity<Baker> update(@PathVariable("id") Long id, @RequestBody Baker baker) {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
 
