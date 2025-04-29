@@ -42,7 +42,7 @@ public class BakerControllerTest {
 
         String expectedContent = "{\"id\":null,\"name\":\"New Baker!\",\"employeeId\":null,\"specialty\":null}";
         this.mvc.perform(MockMvcRequestBuilders
-                .get("/bakers/" + givenId))
+                .get("/baker/" + givenId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expectedContent));
     }
@@ -56,7 +56,7 @@ public class BakerControllerTest {
 
         String expectedContent="{\"id\":null,\"name\":\"New Baker!\",\"employeeId\":null,\"specialty\":null}";
         this.mvc.perform(MockMvcRequestBuilders
-                .post("/bakers/")
+                .post("/baker/")
                 .content(expectedContent)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
